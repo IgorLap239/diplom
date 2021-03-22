@@ -1,10 +1,10 @@
 'use strict';
 
-//import toggleMenu from './modules/toggleMenu';
+import toggleMenu from './modules/toggleMenu';
 import slider from './modules/slider';
 
 //меню
-//toggleMenu();
+toggleMenu();
 
 //слайдер
 slider();

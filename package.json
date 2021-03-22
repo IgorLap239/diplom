@@ -7,8 +7,16 @@
         "build": "webpack --config webpack.prod.config.js",
         "dev": "webpack serve --config webpack.dev.config.js"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/IgorLap239/diplom.git"
+    },
     "author": "",
     "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/IgorLap239/diplom/issues"
+    },
+    "homepage": "https://github.com/IgorLap239/diplom#readme",
     "devDependencies": {
         "@babel/core": "^7.13.10",
         "@babel/preset-env": "^7.13.12",
