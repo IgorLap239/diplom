@@ -18,7 +18,6 @@ const burgerFixed = () => {
             } else {
                 floatElement.style.position = '';
                 floatElement.style.top = '';
-                return;
             }
         };
     }
