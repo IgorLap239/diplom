@@ -18,7 +18,7 @@ const giftPopUp = () => {
                 // сколько времени прошло с начала анимации?
                 const timePassed = Date.now() - start;
                 if (timePassed >= 1010) {
-                    clearInterval(timer); // закончить анимацию через 2 секунды
+                    clearInterval(timer);
                     return;
                 }
 

@@ -5,13 +5,12 @@ const menuPopUp = () => {
 
     const handlerMenu = (event) => {
         const target = event.target;
-        let menyStyle = getComputedStyle(menu);
-        if (menyStyle.display === 'none') {
+        let menuStyle = getComputedStyle(menu);
+        if (menuStyle.display === 'none') {
             if (target === burgerButton) {
                 menu.style.display = 'flex';
             }
-        } else if (menyStyle.display === 'flex') {
-            console.log(target);
+        } else if (menuStyle.display === 'flex') {
             if (target === closeMenuBtn || target.closest('.scroll')) {
                 menu.style.display = 'none';
             }
