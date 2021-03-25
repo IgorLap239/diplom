@@ -6,11 +6,9 @@ const togglePopUp = () => {
         callbackBtn = document.querySelector('.callback-btn'),
         giftBtn = document.querySelector('.fixed-gift > img'),
         giftBlock = document.querySelector('.fixed-gift');
-    //giftPopupContent = giftPopUp.querySelector('.form-wrapper');
 
 
     const popUpSelect = (target) => {
-        //let popUpContent = document.querySelector('.form-wrapper');
         if (target === giftBtn) {
             giftBlock.style.display = 'none';
             giftPopUp.style.display = 'block';
@@ -24,40 +22,44 @@ const togglePopUp = () => {
             callbackPopUp.style.display = 'block';
             const popUpContent = callbackPopUp.querySelector('.form-wrapper');
             return popUpContent;
+        } else {
+            return 0;
         }
     };
     const popUpAnimate = (event) => {
         const target = event.target;
         const popUpContent = popUpSelect(target);
-        if (document.documentElement.clientWidth > 768) {
-            const draw = (timePassed) => {
-                popUpContent.style.top = timePassed / 10 + 'px';
+        if (popUpContent !== 0) {
+            if (document.documentElement.clientWidth > 768) {
+                const draw = (timePassed) => {
+                    popUpContent.style.top = timePassed / 10 + 'px';
 
-            };
+                };
 
-            const start = Date.now(); // запомнить время начала
-            const timer = setInterval(() => {
-                // сколько времени прошло с начала анимации?
-                const timePassed = Date.now() - start;
-                if (timePassed >= 1010) {
-                    clearInterval(timer);
-                    return;
-                }
-                // отрисовать анимацию на момент timePassed, прошедший с начала анимации
-                draw(timePassed);
-            }, 20);
+                const start = Date.now();
+                const timer = setInterval(() => {
+                    const timePassed = Date.now() - start;
+                    if (timePassed >= 1010) {
+                        clearInterval(timer);
+                        return;
+                    }
+                    draw(timePassed);
+                }, 20);
+            }
         }
     };
 
     const popUpClose = (event) => {
         let target = event.target;
         const popUp = target.closest('.popup');
-        if (target.classList.contains('close-btn') || target.classList.contains('close_icon')) {
-            popUp.style.display = 'none';
-        } else {
-            target = target.closest('.form-wrapper');
-            if (!target) {
+        if (popUp) {
+            if (target.classList.contains('close-btn') || target.classList.contains('close_icon')) {
                 popUp.style.display = 'none';
+            } else {
+                target = target.closest('.form-wrapper');
+                if (!target) {
+                    popUp.style.display = 'none';
+                }
             }
         }
     };

@@ -8,6 +8,8 @@ import togglePopUp from './modules/togglePopUp';
 import mainSlider from './modules/mainSlider';
 //import servicesSlider from './modules/servicesSlider';
 //import gallerySlider from './modules/gallerySlider';
+import validation from './modules/validation';
+import sendForm from './modules/sendForm';
 
 //меню выбора клуба
 toggleMenu();
@@ -31,4 +33,7 @@ mainSlider();
 //servicesSlider();
 
 //слайдер галереи
-//gallerySlider();
+validation();
+
+//отправка форм
+sendForm();
