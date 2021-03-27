@@ -14,17 +14,44 @@ const sendForm = () => {
     const formHandler = (event) => {
         event.preventDefault();
         const target = event.target;
+        if (target === cardOrderForm || target === footerForm) {
+            let radioCheck = target.querySelectorAll('input[type="radio"]');
+            let counter = 0;
+            radioCheck.forEach(item => {
+                if (item.checked === false) {
+                    counter++;
+                }
+            });
+            if (counter === radioCheck.length) {
+                const errorDiv = document.createElement('div');
+                errorDiv.textContent = 'Выберите клуб';
+                errorDiv.classList.add('validator-error');
+                errorDiv.style.paddingRight = '30px';
+                errorDiv.style.paddingBottom = '5px';
+                target.querySelector('button').insertAdjacentElement('beforebegin', errorDiv);
+                return;
+            } else {
+                if (target.querySelector('button').previousElementSibling && target.querySelector('button').previousElementSibling.classList.contains('validator-error')) {
+                    target.querySelector('button').previousElementSibling.remove();
+                }
+            }
+        }
+
         let check = target.querySelector('input[type="checkbox"]');
         if (check) {
+            const elem = check.closest('p');
             if ((!check.checked)) {
                 const errorDiv = document.createElement('div');
                 errorDiv.textContent = 'Требуется согласие';
                 errorDiv.classList.add('validator-error');
-                check.closest('p').insertAdjacentElement('afterend', errorDiv);
+                if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
+                    return;
+                }
+                elem.insertAdjacentElement('afterend', errorDiv);
                 return;
             } else {
-                if (check.closest('p').nextElementSibling && check.closest('p').nextElementSibling.classList.contains('validator-error')) {
-                    check.closest('p').nextElementSibling.remove();
+                if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
+                    elem.nextElementSibling.remove();
                 }
             }
         }

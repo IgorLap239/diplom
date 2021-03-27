@@ -2065,7 +2065,8 @@ footer .footer-bottom .right .socials .social-icon:hover a {
     right: 0;
     z-index: 1200;
     width: 380px;
-    height: 355px
+    min-height: 355px;
+    height: auto;
 }
 
 .popup .form-wrapper .close-form {
@@ -2094,7 +2095,8 @@ footer .footer-bottom .right .socials .social-icon:hover a {
     text-align: center;
     z-index: 1210;
     width: 340px;
-    height: 315px;
+    min-height: 315px;
+    height: auto;
     background-color: #1e1c34;
     margin: 0 auto;
     text-align: center

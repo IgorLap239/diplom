@@ -47,7 +47,7 @@ const validation = () => {
             if (item.classList.contains('error')) {
                 targetForm.querySelector('button').setAttribute("disabled", "disabled");
             }
-        })
+        });
     };
 
     const showError = (elem) => {
@@ -87,7 +87,9 @@ const validation = () => {
         }
 
         .validator-error {
-          font-size: 12px;
+          font-size: 14px;
+          font-weight: bold;
+          padding-top: 10px;
           font-family: sans-serif;
           color: red;
         }
