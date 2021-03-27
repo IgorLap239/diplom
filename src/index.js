@@ -8,6 +8,7 @@ import togglePopUp from './modules/togglePopUp';
 import mainSlider from './modules/mainSlider';
 //import servicesSlider from './modules/servicesSlider';
 //import gallerySlider from './modules/gallerySlider';
+import calculator from './modules/calculator';
 import validation from './modules/validation';
 import sendForm from './modules/sendForm';
 
@@ -31,6 +32,12 @@ mainSlider();
 
 //слайдер карусель
 //servicesSlider();
+
+//слайдер галереи
+
+
+//калькулятор
+calculator();
 
 //слайдер галереи
 validation();
