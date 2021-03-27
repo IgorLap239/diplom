@@ -1584,11 +1584,13 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
     padding-left: 75px;
     padding-right: 75px;
     max-width: 900px;
     margin: 0 auto;
-    text-align: center
 }
 
 #gallery .gallery-slider .slide {
@@ -1597,7 +1599,6 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider .slider-arrow {
-    position: absolute;
     top: 50%;
     margin-top: -18px;
     z-index: 100;
@@ -1605,6 +1606,7 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider .slider-arrow span {
+    position: absolute;
     display: block;
     width: 36px;
     height: 37px;
@@ -1615,11 +1617,13 @@ nav.popup-menu .close-menu-btn img {
 }
 
 #gallery .gallery-slider .slider-arrow.prev {
-    left: 0
+    left: 0;
+    margin-right: 45px;
 }
 
 #gallery .gallery-slider .slider-arrow.next {
-    right: 0
+    right: 0;
+    margin-left: 10px;
 }
 
 #gallery .gallery-slider .slider-dots {

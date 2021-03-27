@@ -44,7 +44,9 @@ const calculator = (price = 100) => {
     };
 
     cardOrder.addEventListener('change', countSum);
-    countSum();
+    if (location.href.match(/index.html/i)) {
+        countSum();
+    }
 };
 
 export default calculator;
