@@ -3,14 +3,6 @@ const gallerySlider = () => {
 
     let slide = gallerySlider.querySelectorAll('.slide');
 
-    //ul.classList.add('slider-dots');
-    //slider.append(ul);
-    /*let dots = document.querySelector('.gallery-slider > .slider-dots');
-    dots.style.cssText = `background-color: yellow;
-    width: 100px;
-    height: 100px;
-    `;*/
-
     let currentSlide = 0,
         interval;
 
@@ -76,7 +68,6 @@ const gallerySlider = () => {
     };
 
     const dot = addDot(slide.length);
-    console.log(dot);
 
     const startSlide = (time = 3000) => {
         interval = setInterval(autoPlaySlide, time);
@@ -131,7 +122,6 @@ const gallerySlider = () => {
             startSlide(2500);
         }
     });
-    //addDot(slide.length);
     addArrow();
     startSlide(2500);
 };

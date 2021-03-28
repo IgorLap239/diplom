@@ -6,7 +6,7 @@ import burgerFixed from './modules/burgerFixed';
 import arrowShow from './modules/arrowShow';
 import togglePopUp from './modules/togglePopUp';
 import mainSlider from './modules/mainSlider';
-//import servicesSlider from './modules/servicesSlider';
+import servicesSlider from './modules/servicesSlider';
 import gallerySlider from './modules/gallerySlider';
 import calculator from './modules/calculator';
 import validation from './modules/validation';
@@ -31,7 +31,7 @@ togglePopUp();
 mainSlider();
 
 //слайдер карусель
-//servicesSlider();
+servicesSlider();
 
 //слайдер галереи
 gallerySlider();
