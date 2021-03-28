@@ -26,7 +26,7 @@ const validation = () => {
                 showError(target, targetForm);
                 targetForm.querySelector('button').setAttribute("disabled", "disabled");
             } else {
-                showSuccess(target);
+                showSuccess(target, targetForm);
                 targetForm.querySelector('button').removeAttribute("disabled");
                 targetForm.querySelector('button').style.display = 'inline-block';
                 target.value = target.value[0].toUpperCase() + target.value.substr(1, ).toLowerCase();
@@ -34,7 +34,7 @@ const validation = () => {
         }
         if (target.matches('input[name="phone"]')) {
             if ((target.value[0] !== '+' && target.value.length === 7) || (target.value[0] !== '+' && target.value.length === 11) || (target.value[0] === '+' && target.value.length === 12)) {
-                showSuccess(target);
+                showSuccess(target, targetForm);
                 targetForm.querySelector('button').removeAttribute("disabled");
                 targetForm.querySelector('button').style.display = 'inline-block';
             } else {
@@ -56,11 +56,19 @@ const validation = () => {
         if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
             return;
         }
+        if (elem.matches('input[name="name"]') && targetForm.querySelector('.name-error')) {
+            return;
+        }
+        if (elem.matches('input[name="phone"]') && targetForm.querySelector('.phone-error')) {
+            return;
+        }
         const errorDiv = document.createElement('div');
         if (elem.matches('input[name="name"]')) {
             errorDiv.textContent = 'Имя должно состоять минимум из 2 символов';
+            errorDiv.classList.add('name-error');
         } else if (elem.matches('input[name="phone"]')) {
             errorDiv.textContent = 'Введите номер длинной от 7 до 13 цифр';
+            errorDiv.classList.add('phone-error');
         } else if (elem.matches('input[type="checkbox"]')) {
             errorDiv.textContent = 'Для отправки формы отметьте согласие на обработку персональных данных';
         }
@@ -73,11 +81,18 @@ const validation = () => {
 
     };
 
-    const showSuccess = (elem) => {
+    const showSuccess = (elem, targetForm) => {
         elem.classList.remove('error');
         elem.classList.add('success');
         if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
             elem.nextElementSibling.remove();
+        }
+        if (targetForm === bannerForm) {
+            if (elem.matches('input[name="name"]')) {
+                targetForm.querySelector('.name-error').remove();
+            } else if (elem.matches('input[name="phone"]')) {
+                targetForm.querySelector('.phone-error').remove();
+            }
         }
     };
 
