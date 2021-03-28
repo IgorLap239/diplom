@@ -80,6 +80,13 @@ const servicesSlider = () => {
                 overflow: hidden !important;
                 position: relative;
             }
+
+            @media only screen and (max-width:767px) {
+                .services__slider {
+                    padding: 0px 0px !important;
+                }
+            }
+
             .services__slider__wrap {
                 transition: transform 0.5s;
                 will-change: transform !important;

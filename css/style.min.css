@@ -1516,14 +1516,14 @@ nav.popup-menu .close-menu-btn img {
 .services-slider {
     display: flex;
     margin: 0 auto;
-    padding-left: 15px;
     padding-right: 15px;
+    padding-left: 15px;
 }
 
 .services-slider .slide {
     text-align: center;
     margin: 0 auto;
-    width: 210px
+    width: 210px;
 }
 
 .services-slider .slide img {
@@ -2415,7 +2415,6 @@ p.personal-data input[type=checkbox]:checked+label:before {
         display: none!important
     }
     #gallery .gallery-slider .slider-dots {
-        background-color: rgba(79, 25, 52, .5);
         padding-top: 12px;
         padding-left: 5px;
         padding-right: 5px
