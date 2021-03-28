@@ -3,14 +3,22 @@ const toggleMenu = () => {
         clubList = document.querySelector('.clubs-list > ul');
 
     const handlerMenu = () => {
+        const target = event.target;
         let clubListStyle = getComputedStyle(clubList);
-        if (clubListStyle.display === 'none') {
-            clubList.style.display = 'block';
+        if (target === clubSelect) {
+            if (clubListStyle.display === 'none') {
+
+                clubList.style.display = 'block';
+            } else if (clubListStyle.display === 'block') {
+                clubList.style.display = 'none';
+            }
         } else if (clubListStyle.display === 'block') {
-            clubList.style.display = 'none';
+            if (!target.closest('.clubs-list > p')) {
+                clubList.style.display = 'none';
+            }
         }
     };
-    clubSelect.addEventListener('click', handlerMenu);
+    window.addEventListener('click', handlerMenu);
 
 };
 

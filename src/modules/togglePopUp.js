@@ -32,19 +32,18 @@ const togglePopUp = () => {
         if (popUpContent !== 0) {
             if (document.documentElement.clientWidth > 768) {
                 const draw = (timePassed) => {
-                    popUpContent.style.top = timePassed / 10 + 'px';
-
+                    popUpContent.style.top = timePassed + 'px';
                 };
 
                 const start = Date.now();
                 const timer = setInterval(() => {
                     const timePassed = Date.now() - start;
-                    if (timePassed >= 1010) {
+                    if (timePassed >= 380) {
                         clearInterval(timer);
                         return;
                     }
-                    draw(timePassed);
-                }, 20);
+                    draw(timePassed / 2);
+                }, 10);
             }
         }
     };

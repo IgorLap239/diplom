@@ -34,12 +34,17 @@ const calculator = (price = 100) => {
     };
 
     const countSum = () => {
-        let club = clubSelect(),
-            time = periodSelect();
-        if (promoSale.value !== 'ТЕЛО2019') {
-            totalPrice.textContent = eval(`${club}${time}`);
-        } else {
-            totalPrice.textContent = Math.floor(eval(`${club}${time}`) * 0.7);
+        if (location.href.match(/index.html/i)) {
+            let club = clubSelect(),
+                time = periodSelect();
+            if (time === 0) {
+                return;
+            }
+            if (promoSale.value !== 'ТЕЛО2019') {
+                totalPrice.textContent = eval(`${club}${time}`);
+            } else {
+                totalPrice.textContent = Math.floor(eval(`${club}${time}`) * 0.7);
+            }
         }
     };
 

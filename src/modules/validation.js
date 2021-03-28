@@ -23,7 +23,7 @@ const validation = () => {
         target.value = target.value.replace(/-*$/g, '');
         if (target.matches('input[name="name"]')) {
             if (target.value.length < 2) {
-                showError(target);
+                showError(target, targetForm);
                 targetForm.querySelector('button').setAttribute("disabled", "disabled");
             } else {
                 showSuccess(target);
@@ -38,7 +38,7 @@ const validation = () => {
                 targetForm.querySelector('button').removeAttribute("disabled");
                 targetForm.querySelector('button').style.display = 'inline-block';
             } else {
-                showError(target);
+                showError(target, targetForm);
                 targetForm.querySelector('button').setAttribute("disabled", "disabled");
             }
         }
@@ -50,7 +50,7 @@ const validation = () => {
         });
     };
 
-    const showError = (elem) => {
+    const showError = (elem, targetForm) => {
         elem.classList.remove('success');
         elem.classList.add('error');
         if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
@@ -59,13 +59,18 @@ const validation = () => {
         const errorDiv = document.createElement('div');
         if (elem.matches('input[name="name"]')) {
             errorDiv.textContent = 'Имя должно состоять минимум из 2 символов';
-        } else if (elem.matches('input[name="phone"]') || elem.matches('input[placeholder="Ваш номер телефона"]')) {
-            errorDiv.textContent = 'Это не номер телефона';
+        } else if (elem.matches('input[name="phone"]')) {
+            errorDiv.textContent = 'Введите номер длинной от 7 до 13 цифр';
         } else if (elem.matches('input[type="checkbox"]')) {
-            errorDiv.textContent = 'Требуется согласие';
+            errorDiv.textContent = 'Для отправки формы отметьте согласие на обработку персональных данных';
         }
         errorDiv.classList.add('validator-error');
-        elem.insertAdjacentElement('afterend', errorDiv);
+        if (targetForm !== bannerForm) {
+            elem.insertAdjacentElement('afterend', errorDiv);
+        } else {
+            targetForm.insertAdjacentElement('beforeEnd', errorDiv);
+        }
+
     };
 
     const showSuccess = (elem) => {

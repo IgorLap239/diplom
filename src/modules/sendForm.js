@@ -42,7 +42,7 @@ const sendForm = () => {
             const elem = check.closest('p');
             if ((!check.checked)) {
                 const errorDiv = document.createElement('div');
-                errorDiv.textContent = 'Требуется согласие';
+                errorDiv.textContent = 'Для отправки формы отметьте согласие на обработку персональных данных';
                 errorDiv.classList.add('validator-error');
                 if (elem.nextElementSibling && elem.nextElementSibling.classList.contains('validator-error')) {
                     return;
@@ -68,12 +68,14 @@ const sendForm = () => {
                 if (response.status !== 200) {
                     throw new Error('status network not 200');
                 }
-
+                let popupContentTmp = '';
                 if (target === bannerForm || target === cardOrderForm || target === footerForm) {
                     statusMessage.remove();
                     thanksPopUp.style.display = 'block';
                     clearInputs(target);
                 } else {
+                    statusMessage.remove();
+                    popupContentTmp = target.innerHTML;
                     target.innerHTML = `<div class="form-content">
                     <h4>Спасибо!</h4>
                     <p style='font-size: 20px;
@@ -89,11 +91,14 @@ const sendForm = () => {
                     popUps.forEach(item => {
                         if (item.style.display === 'block') {
                             item.style.display = 'none';
+                            target.innerHTML = popupContentTmp;
+                            clearInputs(target);
                         }
                     });
                 }, 5000);
             })
             .catch(() => {
+                let popupContentTmp = '';
                 if (target === bannerForm || target === cardOrderForm || target === footerForm) {
                     statusMessage.remove();
                     thanksPopUp.innerHTML = `<div class="form-content">
@@ -108,6 +113,8 @@ const sendForm = () => {
                     thanksPopUp.style.display = 'block';
                     clearInputs(target);
                 } else {
+                    statusMessage.remove();
+                    popupContentTmp = target.innerHTML;
                     target.innerHTML = `<div class="form-content">
                     <h4>Упс!</h4>
                     <p style='font-size: 20px;
@@ -123,6 +130,8 @@ const sendForm = () => {
                     popUps.forEach(item => {
                         if (item.style.display === 'block') {
                             item.style.display = 'none';
+                            target.innerHTML = popupContentTmp;
+                            clearInputs(target);
                         }
                     });
                 }, 5000);
@@ -161,7 +170,12 @@ const sendForm = () => {
 
     const clearInputs = (target) => {
         target.querySelectorAll('input').forEach(item => {
-            item.value = '';
+            if (!item.matches('input[name="card-type"]') && !item.matches('input[name="club-name"]')) {
+                item.value = '';
+            }
+            if (item.classList.contains('success')) {
+                item.classList.remove('success');
+            }
             if (item.matches('input[type="radio"]') || item.matches('input[type="checkbox"]')) {
                 item.checked = false;
             }

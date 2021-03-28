@@ -1481,7 +1481,7 @@ nav.popup-menu .close-menu-btn img {
     background: url(../images/banner-bg.png) no-repeat center top;
     height: 262px;
     color: #fff;
-    text-align: center
+    text-align: center;
 }
 
 #banner h2 {
@@ -1500,7 +1500,7 @@ nav.popup-menu .close-menu-btn img {
 
 #banner-form {
     padding-top: 10px;
-    padding-bottom: 30px
+    padding-bottom: 30px;
 }
 
 #banner-form input {
