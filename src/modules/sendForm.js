@@ -63,6 +63,7 @@ const sendForm = () => {
                 body[val[0]] = val[1];
             }
         }
+
         postData(body)
             .then((response) => {
                 if (response.status !== 200) {
@@ -86,16 +87,27 @@ const sendForm = () => {
                     <button class="btn close-btn">OK</button>
                     </div>`;
                 }
-                setTimeout(() => {
+                const timeout = setTimeout(() => {
                     let popUps = document.querySelectorAll('.popup');
                     popUps.forEach(item => {
                         if (item.style.display === 'block') {
                             item.style.display = 'none';
                             target.innerHTML = popupContentTmp;
+                            console.log(target);
                             clearInputs(target);
                         }
                     });
                 }, 5000);
+                window.addEventListener('click', () => {
+                    let target = event.target;
+                    const popUp = target.closest('.popup');
+                    const popUpForm = popUp.querySelector('form');
+                    if (popUp) {
+                        popUpForm.innerHTML = popupContentTmp;
+                        clearTimeout(timeout);
+                        clearInputs(target);
+                    }
+                });
             })
             .catch(() => {
                 let popupContentTmp = '';
@@ -178,6 +190,11 @@ const sendForm = () => {
             }
             if (item.matches('input[type="radio"]') || item.matches('input[type="checkbox"]')) {
                 item.checked = false;
+            }
+            if (target === cardOrderForm) {
+                if (document.getElementById('price-total')) {
+                    document.getElementById('price-total').textContent = 0;
+                }
             }
         });
     };

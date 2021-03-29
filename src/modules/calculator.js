@@ -40,6 +40,9 @@ const calculator = (price = 100) => {
             if (time === 0) {
                 return;
             }
+            if (club === '') {
+                return;
+            }
             if (promoSale.value !== 'ТЕЛО2019') {
                 totalPrice.textContent = eval(`${club}${time}`);
             } else {
